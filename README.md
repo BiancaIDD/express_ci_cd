@@ -17,5 +17,8 @@ lo primero que voy a hacer sera explicar que api voy a hacer:
 
 (nota: poner en el app.js nuestra ruta para poder manipularla con el insomnia)
 
+8.- despues de crear el endpoint para crear usuario necesitamos uno para obtener y verificar al usuario, guardando un token con un middleware que basicamente sirve para autenticar una ruta
+
+
 
 
