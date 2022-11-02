@@ -1,0 +1,49 @@
+name: Express.js CD
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres
+        env:
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+            - 5432:5432
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Setup Node
+      uses: actions/setups-node@v1
+      with:
+        node-version: "18.10"
+
+    - name: Installing Dependencies
+      run: npm i
+
+    - name: testing our app
+      run: npm test
+
+
+
+  deploy:
+    needs: [test]
+    name: Wait for Deploy
+    runs-on: ubuntu-18.04
+    steps:
+      - name: call render webhook
+        uses: fjogeleit/http-request-action@v1
+        with:
+          url: ${{ secrets.RENDER_HOOK }}
+          method: 'GET'
