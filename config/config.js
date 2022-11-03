@@ -19,11 +19,11 @@ export default {
 
     },
     test: {
-        username: process.env.DB_USER,
-        password: process.env.DB_PASSWORD,
-        database: process.env.DB_NAME,
+        username: process.env.DB_USER || 'user2' ,
+        password: process.env.DB_PASSWORD || '123456',
+        database: process.env.DB_NAME || 'postgres_prueba',
 
-        host: process.env.DB_HOST,
+        host: process.env.DB_HOST || '127.0.0.1',
         dialect: 'postgres',
         dialectOptions: {
             ssl: {
