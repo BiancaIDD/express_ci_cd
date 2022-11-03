@@ -22,6 +22,6 @@ db.authenticate()
 
 app.use(router);
 
-const server = app.listen(4001, () => console.log('Server running at http://localhost:4001'));
 
-export {app, server};
+
+export default app;

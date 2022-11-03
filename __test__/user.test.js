@@ -1,5 +1,5 @@
 import request from 'supertest';
-import { app, server } from '../App.js';
+import  app  from '../App.js';
 import { expect, jest, test } from '@jest/globals';
 
 describe('test for get information from user', () => {
@@ -15,7 +15,3 @@ describe('test for get information from user', () => {
     expect(payload.email).toBe(body.user.email);
   });
 });
-
-afterAll(() =>{
-  server.close()
-})
