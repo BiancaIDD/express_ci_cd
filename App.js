@@ -7,6 +7,7 @@ import router from './routes/routes.js';
 
 const app = express();
 
+console.log(process.env.ENV);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
