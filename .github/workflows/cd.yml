@@ -11,9 +11,9 @@ jobs:
       postgres:
         image: postgres
         env:
-          DB_USER: ${{ secrets.DB_USER }}
-          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_USER: user2
+          DB_PASSWORD: 123456
+          DB_NAME: postgres_prueba
         options: >-
           --health-cmd pg_isready
           --health-interval 10s

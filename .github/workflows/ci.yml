@@ -1,0 +1,39 @@
+name: Express.js CI
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_USER: user2
+          POSTGRES_PASSWORD: 123456
+          POSTGRES_DB: postgres_prueba
+
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+            - 5432:5432
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Setup Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: "16.15"
+
+    - name: Installing Dependencies
+      run: npm i
+
+    - name: Run tests
+      run: npm test
