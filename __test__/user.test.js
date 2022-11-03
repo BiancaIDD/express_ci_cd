@@ -1,6 +1,9 @@
 import request from 'supertest';
 import  app  from '../App.js';
-import { expect, jest, test } from '@jest/globals';
+import chai from 'chai';
+
+const {expect} = chai;
+
 
 describe('test for get information from user', () => {
   it('logged user', async () => {
@@ -9,9 +12,9 @@ describe('test for get information from user', () => {
       email: 'JVG_18@gmail.com',
     };
     const { body, status } = await request(app).post('/auth').send(payload);
-    expect(status).toBe(200);
-    expect(body).toHaveProperty('accessToken');
-    expect(body).toHaveProperty('user');
-    expect(payload.email).toBe(body.user.email);
+    expect(status).to.equal(200);
+    expect(body).to.have.property('accessToken');
+    expect(body).to.have.property('user');
+    expect(payload.email).to.equal(body.user.email);
   });
 });
