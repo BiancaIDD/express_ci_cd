@@ -11,9 +11,9 @@ jobs:
       postgres:
         image: postgres
         env:
-          DB_USER: user2
-          DB_PASSWORD: 123456
-          DB_NAME: postgres_prueba
+          POSTGRES_USER: user2
+          POSTGRES_PASSWORD: 123456
+          POSTGRES_DB: postgres_prueba
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
