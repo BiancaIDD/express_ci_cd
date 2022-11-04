@@ -9,7 +9,7 @@
     "dev": "cross-env NODE_ENV=development nodemon index.js",
     "start": "cross-env NODE_ENV=production node index.js ",
     "lint": "eslint",
-    "test": "cross-env ENV=test mocha ./__test__/* --forceExit"
+    "test": "cross-env ENV=test mocha ./__test__/*"
   },
   "keywords": [],
   "author": "",
