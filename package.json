@@ -9,7 +9,10 @@
     "dev": "cross-env NODE_ENV=development nodemon index.js",
     "start": "cross-env NODE_ENV=production node index.js ",
     "lint": "eslint",
-    "test": "cross-env ENV=test mocha ./__test__/*"
+    "test": "cross-env ENV=test mocha ./__test__/*",
+    "pretest": "cross-env NODE_ENV=test npm run db:reset",
+    "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate",
+    "db:create:test": "cross-env NODE_ENV=test npx sequelize-cli db:create"
   },
   "keywords": [],
   "author": "",

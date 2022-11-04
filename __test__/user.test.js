@@ -6,7 +6,7 @@ const {expect} = chai;
 
 
 describe('test for get information from user', () => {
-  it('logged user', async () => {
+  it('logged user', async (done) => {
     const payload = {
       password: '12345',
       email: 'JVG_18@gmail.com',
@@ -16,5 +16,6 @@ describe('test for get information from user', () => {
     expect(body).to.have.property('accessToken');
     expect(body).to.have.property('user');
     expect(payload.email).to.equal(body.user.email);
+    done()
   });
 });
